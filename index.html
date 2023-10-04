@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="Utf-8">
+        <title>
+            Novosti Tarkova
+        </title>
+        <link rel="stylesheet" href="style.css">
+        <script>
+            const news = [
+                {
+                    title: "Killa помер", 
+                    content: "На развязке, ликвидатор до настоящего момента не известен!",
+                    author: "Серега Снегоступ",
+                    date: "20/09 2023",
+                    like: 5,
+                    dislike: 1,
+                },
+                {
+                    title: "Tagilla тоже", 
+                    content: "На заводе уничтожен брат Kill`ы, на следующий день, убийца все ещё не известен.",
+                    author: "Серега Снегоступ",
+                    date: "21/09 2023",
+                    like: 3,
+                    dislike: 2,
+                },
+                {
+                    title: "Аномальный спавн ремкомплектов на Таможне", 
+                    content: "На  Wats Up My Boy за один рейд нашел целых 4 ремкомплекта для брони, это новый рекорд этого вайпа! Однако до выхода, конечно же, донести хабар не вышло.",
+                    author: "Серега Мегалут",
+                    date: "21/09 2023",
+                    link: "file:///C:/git/guess/novosti/qweTwo.html",
+                    full: "Происшествие случилось вечером. Wats Up My Boy загрузившись на трейлерном парке, на территории таркона Таможни, обшарил все гаражи, найдя сразу 2 ремкоплекта для брони. Далее наш ГЕРОЙ, который никогда не сдается проследовал по перебежке к ВС РФ, где  нашел уже 3й ремкомплект. Этого нашему герою оказалось мало и он решил проверить старую стройку, на верху которой нашел, представьте, 4й ремкомплект для брони за рейд! Пока наш герой играл в тетриз в своем рюкзаке, под действием адреналина удачи, его заметил дикий с погонялом Грубая Схема и, первым же выстрелом с вертухи прописал нашему счастивчику(или уже несчастивчику) \"Голова, глаза\". Так и закончилась эта просто невироятно драматичная история. \n В эту историю трудно поверить, однако я, Серега Мегалут, не мог не проверить данный инцедент многократно и провести тчательное раследование. К сожалению, данный инцедент действительно произошел." ,
+                    like: 111,
+                    dislike: 0,
+
+                }
+            ];
+            window.addEventListener("load", () => {
+                const feed = document.querySelector("main");
+
+                news.forEach((data) => {
+                    const post = document.createElement("div");
+                    post.classList.add("post");
+                    feed.appendChild(post);
+
+                    const title = document.createElement("h1");
+                    title.textContent = data.title;
+                    post.appendChild(title);
+                     
+                    const content = document.createElement("p");
+                    content.textContent = data.content;
+                    post.appendChild(content);
+
+                    if (data.full) {
+                        const link = document.createElement("a");
+                        link.href = data.link;
+                        link.textContent = "подробности";
+                        link.addEventListener("click", (e) => {
+                            e.preventDefault();
+                            const popup = document.createElement("div");
+                            popup.classList.add("popup");
+                            popup.textContent = data.full;
+                            const body = document.querySelector("body");
+                            body.appendChild(popup);
+
+                            const close = document.createElement("button");
+                            close.textContent = "закрыть";
+                            close.addEventListener("click", (e) => {
+                                body.removeChild(popup);
+                            })
+                            popup.appendChild(close);
+                        })
+                        post.appendChild(link);
+                    }
+
+                    const details = document.createElement("div");
+                    details.classList.add("details");
+                    post.appendChild(details);
+                    
+                    const author = document.createElement("h3");
+                    author.textContent = "Автор: " + data.author;
+                    details.appendChild(author);
+
+                    const date = document.createElement("h4");
+                    date.textContent = data.date;
+                    details.appendChild(date);
+
+                    const controls = document.createElement("div");
+                    controls.classList.add("controls");
+                    post.appendChild(controls);
+
+                    const like = document.createElement("button");
+                    like.textContent = "нравится " + data.like;
+                    like.addEventListener("click", (t) => {
+                        data.like += 1;
+                        like.textContent = "нравится " + data.like;
+                        const bg = post.style.background;
+                        post.style.background = "seagreen";
+                        setTimeout(() => {
+                            post.style.background = bg;
+                        }, 500);
+                    })
+                    controls.appendChild(like);
+
+                    const dislike = document.createElement("button");
+                    dislike.textContent = "не нравится " + data.dislike;
+                    dislike.addEventListener("click", (t) => {
+                        data.dislike += 1;
+                        dislike.textContent = "не нравится " + data.dislike;
+                        const bg = post.style.background;
+                        post.style.background = "Maroon";
+                        setTimeout(() => {
+                            post.style.background = bg;
+                        }, 500);
+                    })
+                    controls.appendChild(dislike);
+
+                    const hide = document.createElement("button");
+                    hide.textContent = "не интересно";
+                    hide.addEventListener("click", (t) => {
+                        feed.removeChild(post);
+                    })
+                    controls.appendChild(hide);
+                })
+            }) 
+        </script>
+    </head>
+    <body>
+        <main>
+            <h1>
+                Новости таркова
+            </h1>
+        </main>
+    </body>
+</html>

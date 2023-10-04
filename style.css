@@ -1,0 +1,146 @@
+:root {
+    --grey-60: rgb(124, 124, 124);
+    --white-100: rgb(256, 256, 256);
+    --grey-95: rgb(164, 164, 164);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0; /* внешние поля */
+    padding: 0; /* внутренние поля */
+    /*filter: invert(100); */
+}
+
+button {
+    border: none;
+    background: none;
+    color: inherit;
+    font-size: inherit;
+    font-family: inherit;
+    &:focus {outline:0;};
+    cursor: pointer;
+}
+
+html, body {
+    
+    height: 100%;
+}
+body {
+    padding-left: 15%;
+    padding-right: 15%;
+    background-color: var(--grey-95);
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+main {
+    padding-top: 2em;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+main > h1 {
+    text-align: center;
+}
+
+.post, .popup {
+    transition: background-color .25s;
+    background-color: var(--grey-60);
+    padding: 5%;
+    border-radius: 2em;
+    color: var(--white-100);
+}
+
+.post > h1 {
+    text-align: center;
+}
+
+.post > p {
+    padding-top: 10px;
+    text-indent: 1em;
+}
+
+.details {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2em;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    justify-content: right;
+    padding-top: 10px;
+}
+
+.controls {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-top: 1em;
+    gap: 1em;
+}
+
+main > h1 {
+    text-decoration: underline;
+}
+
+.popup {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--grey-60);
+    width: 80%;
+    min-height: 50%;
+    box-shadow: 24px 27px 8px 0px rgba(34, 60, 80, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.popup > button {
+    transition: font-size .5s;
+    border: 1px solid var(--white-100);
+    border-radius: 2em;
+}
+
+.popup > button:hover {
+    font-size: 2em;
+}
+    
+
+/*
+#left {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 20%;
+    border: 5px solid darkblue;
+  }
+  
+  #center {
+    position: absolute;
+    left:21%;
+    top: 0;
+    width: 51%;
+    border: 5px solid red;
+  }
+  
+  #right {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 27%;
+    border: 5px solid darkblue;
+    height: 100%;
+  }
+
+  #center2 {
+    position: absolute;
+    left:21%;
+    top: 0;
+    width: 51%;
+    border: 5px solid red;
+  }
+*/
